@@ -3,10 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/**
+ * @name class: Principal
+ * @Objetivo: Mostrar y llevar a cabi las conversiones que se pueden realizar  
+ * Esta es la pantalla principal, donde son llamados cada uno de os metodos usados para la conversion
+ * de los diferentes datos, son llamados cada vez que se da un click en el jComboBox correspondiente, 
+ * tomando el valor que se encuentra en el jTextArea, asi como la posicion de la opcion seleccionada, esto se lleva a 
+ * la clase de calculos correspondiente donde se hacen los calculos para despues mandar el resultado y ser mostrado
+ * en la jLabel principal
+ * 
+ */
 package Interfaces;
 
 import Calculos.CalculosDivisas;
 import Calculos.CalculosMedidas;
+import Calculos.CalculosMedidasInglesas;
 import Calculos.CalculosPesos;
 import Calculos.CalculosTemperatura;
 import java.text.DecimalFormat;
@@ -22,6 +33,7 @@ public class Principal extends javax.swing.JFrame {
     CalculosTemperatura Temp = new CalculosTemperatura();
     CalculosMedidas Med = new CalculosMedidas();
     CalculosPesos Peso = new CalculosPesos();
+    CalculosMedidasInglesas MedIn = new CalculosMedidasInglesas();
     DecimalFormat df = new DecimalFormat("#.00");
     DecimalFormat dc = new DecimalFormat("#.0000");
 
@@ -30,6 +42,7 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        Calculo = new CalculosDivisas();
     }
 
     /**
@@ -53,10 +66,8 @@ public class Principal extends javax.swing.JFrame {
         jComboBox4 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jComboBox5 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        jTextArea2 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,6 +115,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel7.setText("Unidades de Medidas Inglesas");
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Centimetro a Pulgada", "Centimetro a Pie", "Centimetro a Yarda", "Centimetro a Milla", " " }));
+        jComboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout JPanelDivisasLayout = new javax.swing.GroupLayout(JPanelDivisas);
         JPanelDivisas.setLayout(JPanelDivisasLayout);
@@ -150,58 +166,43 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 10)); // NOI18N
-        jLabel1.setText("Actualizar valores");
-
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 71)); // NOI18N
         jLabel2.setText("0.00");
 
         jTextArea2.setBackground(new java.awt.Color(240, 240, 240));
-        jTextArea2.setColumns(20);
-        jTextArea2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 10)); // NOI18N
-        jTextArea2.setRows(5);
-        jTextArea2.setBorder(null);
+        jTextArea2.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 60)); // NOI18N
+        jTextArea2.setToolTipText("");
         jTextArea2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextArea2KeyTyped(evt);
             }
         });
-        jScrollPane2.setViewportView(jTextArea2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(JPanelDivisas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(JPanelDivisas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextArea2)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(JPanelDivisas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(106, 106, 106)))
-                .addComponent(jLabel1)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JPanelDivisas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextArea2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71))
         );
 
         pack();
@@ -218,23 +219,12 @@ public class Principal extends javax.swing.JFrame {
             jComboBox5.setSelectedIndex(0);
             this.jLabel2.setText("0.00");
             double Valor = Double.parseDouble(this.jTextArea2.getText());
-            System.out.println(dc.format(Peso.Cambio(Valor, Posicion)));
-            this.jLabel2.setText(dc.format(Peso.Cambio(Valor, Posicion)));
-        } catch(Exception e){
+            this.jLabel2.setText(df.format(Calculo.Cambio(Valor, Posicion)));
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Indique un valor antes de elegir la conversion");
             jComboBox1.setSelectedIndex(0);
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jTextArea2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyTyped
-        // TODO add your handling code here:
-        char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && (car < ',' || car > '.')) {
-            evt.consume();
-        }
-
-
-    }//GEN-LAST:event_jTextArea2KeyTyped
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
@@ -247,9 +237,8 @@ public class Principal extends javax.swing.JFrame {
             jComboBox5.setSelectedIndex(0);
             this.jLabel2.setText("0.00");
             double Valor = Double.parseDouble(this.jTextArea2.getText());
-            System.out.println(df.format(Temp.Cambio(Valor, Posicion)));
             this.jLabel2.setText(df.format(Temp.Cambio(Valor, Posicion)));
-        } catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Indique un valor antes de elegir la conversion");
             jComboBox2.setSelectedIndex(0);
         }
@@ -257,7 +246,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
         // TODO add your handling code here:
-         try {
+        try {
             String Total = "";
             int Posicion = jComboBox3.getSelectedIndex();
             jComboBox1.setSelectedIndex(0);
@@ -266,9 +255,8 @@ public class Principal extends javax.swing.JFrame {
             jComboBox5.setSelectedIndex(0);
             this.jLabel2.setText("0.00");
             double Valor = Double.parseDouble(this.jTextArea2.getText());
-            System.out.println(dc.format(Med.Cambio(Valor, Posicion)));
             this.jLabel2.setText(dc.format(Med.Cambio(Valor, Posicion)));
-        } catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Indique un valor antes de elegir la conversion");
             jComboBox3.setSelectedIndex(0);
         }
@@ -285,13 +273,38 @@ public class Principal extends javax.swing.JFrame {
             jComboBox5.setSelectedIndex(0);
             this.jLabel2.setText("0.00");
             double Valor = Double.parseDouble(this.jTextArea2.getText());
-            System.out.println(dc.format(Peso.Cambio(Valor, Posicion)));
             this.jLabel2.setText(dc.format(Peso.Cambio(Valor, Posicion)));
-        } catch(Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Indique un valor antes de elegir la conversion");
             jComboBox4.setSelectedIndex(0);
         }
     }//GEN-LAST:event_jComboBox4ActionPerformed
+
+    private void jComboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox5ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String Total = "";
+            int Posicion = jComboBox5.getSelectedIndex();
+            jComboBox1.setSelectedIndex(0);
+            jComboBox2.setSelectedIndex(0);
+            jComboBox3.setSelectedIndex(0);
+            jComboBox4.setSelectedIndex(0);
+            this.jLabel2.setText("0.00");
+            double Valor = Double.parseDouble(this.jTextArea2.getText());
+            this.jLabel2.setText(df.format(MedIn.Cambio(Valor, Posicion)));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Indique un valor antes de elegir la conversion");
+            jComboBox5.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_jComboBox5ActionPerformed
+
+    private void jTextArea2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea2KeyTyped
+        // TODO add your handling code here:
+        //El metodo que se ve a continuacion se utilizo validar los datos que
+        //entraban en el jTeztArea y de esta manera solo aceptar numeros y algunos caractares especiales("," y ".")
+         char car = evt.getKeyChar();
+        if((car<'0' || car>'9') && (car<',' || car>'.')) evt.consume();
+    }//GEN-LAST:event_jTextArea2KeyTyped
 
     /**
      * @param args the command line arguments
@@ -336,14 +349,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextArea2;
     // End of variables declaration//GEN-END:variables
 }
