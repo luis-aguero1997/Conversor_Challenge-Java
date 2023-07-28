@@ -10,10 +10,21 @@ import Clases.Pesos;
 /**
  *
  * @author Luis
+ *
+ * En esta Clase se lleva a cabo la conversion de los valores que se obtienen en
+ * la ventana principal, esto dependiendo de la opcion que se seleccione, para
+ * despues retornar el resultado de la opcion seleccionada, para despues llevar
+ * a cabo el calculo utilizando el valor que se recibio y el que se tiene
+ * almacenado en la clase correspondiente, en este caso la clase "Pesos".
+ *
+ * Esta logica se repite en las demas clases donde se llevaron a cabo los
+ * calculos.
+ *
  */
 public class CalculosPesos {
-    
+
     Pesos Ps = new Pesos();
+
     public double Cambio(double Valor, int Opcion) {
         double Total = 0;
         switch (Opcion) {

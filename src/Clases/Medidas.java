@@ -7,10 +7,14 @@ package Clases;
 
 /**
  *
- * @author Luis
+ * @author Luis En esta clase fue donde se almacenaron los valores equivalentes
+ * de cada una de las medidas, que posteriormente seran utilizadas para llevar a
+ * cabo las conversiones necesarias, estos valores seran llamados por la clase
+ * de Calculos correspondiente. Esta logica es la misma que se uso en las
+ * diferentes clases usadas.
  */
 public class Medidas {
- 
+
     double Centmetro, Milimetro, Decimetro, Metro, Decametro, Hectometro, Kilometro;
 
     public Medidas() {
@@ -78,7 +82,5 @@ public class Medidas {
     public void setKilometro(double Kilometro) {
         this.Kilometro = Kilometro;
     }
-    
-    
 
 }

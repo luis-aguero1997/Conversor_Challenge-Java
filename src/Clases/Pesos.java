@@ -7,10 +7,14 @@ package Clases;
 
 /**
  *
- * @author Luis
+ * @author Luis En esta clase fue donde se almacenaron los valores equivalentes
+ * de cada uno de los tipos de peso, que posteriormente seran utilizadas para
+ * llevar a cabo las conversiones necesarias, estos valores seran llamados por
+ * la clase de Calculos correspondiente. Esta logica es la misma que se uso en
+ * las diferentes clases usadas.
  */
 public class Pesos {
-    
+
     double Gramo, Kilogramo, Hectogramo, Decagramo, Decigramo, Centigramo, Miligramo;
 
     public Pesos() {
@@ -78,7 +82,5 @@ public class Pesos {
     public void setMiligramo(double Miligramo) {
         this.Miligramo = Miligramo;
     }
-    
-    
-    
+
 }

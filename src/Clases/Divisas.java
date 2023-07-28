@@ -8,8 +8,15 @@ package Clases;
 /**
  *
  * @author Luis
+ *
+ * En esta clase fue donde se almacenaron los valores equivalentes de cada una
+ * de las divisas, que posteriormente seran utilizadas para llevar a cabo las
+ * conversiones necesarias, estos valores seran llamados por la clase de
+ * Calculos correspondiente. Esta logica es la misma que se uso en las
+ * diferentes clases usadas.
  */
 public class Divisas {
+
     public double PesoM, Dolar, Euro, LibraE, WonC, YenJ;
 
     public Divisas() {
